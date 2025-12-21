@@ -15,6 +15,8 @@ sudo systemctl enable firewalld
 sudo systemctl status firewalld
 ```
 
+`cmment:在wsl中firewalld会在安装后退出，可能需要重新安装nftables`
+
 ## Deploy and Configure Database
 
 1. Install MariaDB

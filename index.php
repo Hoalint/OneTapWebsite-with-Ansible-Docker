@@ -102,14 +102,36 @@
                 <h2>Product List</h2>
             </div>
             <div class="row it_works">
-              <?php
+                <?php
+                    // Function to load environment variables from a .env file
+                    function loadEnv($path)
+                    {
+                        if (!file_exists($path)) {
+                            return false;
+                        }
 
-                        // $link = mysqli_connect('172.20.1.101', 'ecomuser', 'ecompassword', 'ecomdb');
-                        // Fetch database connection details directly from environment variables
-                        $dbHost = getenv('DB_HOST');
-                        $dbUser = getenv('DB_USER');
-                        $dbPassword = getenv('DB_PASSWORD');
-                        $dbName = getenv('DB_NAME');
+                        $lines = file($path, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+                        foreach ($lines as $line) {
+                            if (strpos(trim($line), '#') === 0) {
+                                continue;
+                            }
+
+                            list($name, $value) = explode('=', $line, 2);
+                            $name = trim($name);
+                            $value = trim($value);
+                            putenv(sprintf('%s=%s', $name, $value));
+                        }
+                        return true;
+                    }
+
+                    // Load environment variables from .env file
+                    loadEnv(__DIR__ . '/.env');
+
+                    // Retrieve the database connection details from environment variables
+                    $dbHost = getenv('DB_HOST');
+                    $dbUser = getenv('DB_USER');
+                    $dbPassword = getenv('DB_PASSWORD');
+                    $dbName = getenv('DB_NAME');
 
                         // Attempt to connect to the database
                         $link = mysqli_connect($dbHost, $dbUser, $dbPassword, $dbName);
