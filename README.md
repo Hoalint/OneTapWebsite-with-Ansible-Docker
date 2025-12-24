@@ -134,7 +134,7 @@ sudo sed -i 's/172.20.1.101/localhost/g' /var/www/html/index.php
    EOF
 
 6. Update `index.php`
-
+    `comment:这一步做好了，playbook直接修改环境变量就行`
    Update the `index.php` file to load the environment variables from the `.env` file and use them to connect to the database.
 
    ```php
