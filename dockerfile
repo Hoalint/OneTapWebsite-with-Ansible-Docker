@@ -39,6 +39,7 @@ COPY ./apache-config.conf /etc/apache2/conf-enabled/docker-php.conf
 
 # 复制项目文件到容器中
 COPY . /var/www/html/
+# comment:复制这两步应该在compose中才对
 
 # 暴露端口
 EXPOSE 80
