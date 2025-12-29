@@ -117,7 +117,6 @@ OneTapWebsite-with-Ansible-Docker/
 ├── js/                     # JavaScript文件
 ├── img/                    # 网站图片资源
 ├── vendors/                # 第三方前端库
-├── 部署经验总结.md          # 项目经验总结文档
 └── README.md              # 本文件
 ```
 
